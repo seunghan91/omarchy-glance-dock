@@ -1,5 +1,7 @@
 # Glance Dock
 
+**English** · [한국어](README.ko.md) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md) · [Español](README.es.md) · [Deutsch](README.de.md) · [Français](README.fr.md) · [Português (BR)](README.pt-BR.md) · [Русский](README.ru.md)
+
 By **Seunghan** ([@seunghan91](https://github.com/seunghan91)) · [Project page](https://seunghan.xyz/omarchy/glance-dock/)
 
 A dock of open apps for the Omarchy shell. Rest the pointer on the bar left of
@@ -8,6 +10,8 @@ number it shows that workspace's windows, anywhere else in the zone it shows
 the focused workspace's. An optional Apple-style edge dock on the left, right
 or bottom of the screen lists every open app across all workspaces. Both docks
 share one right-click menu with the app's windows and Quit / Force Quit.
+
+![Demo: the bar dock drops under the pointer, follows the workspace numbers, then the edge dock and its right-click menu with Quit and Force Quit](docs/glance-dock-demo.gif)
 
 ![Edge dock on the left with a tooltip](docs/glance-dock-edge.png)
 
