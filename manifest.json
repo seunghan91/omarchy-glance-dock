@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "id": "io.github.seunghan91.glance-dock",
+  "name": "Glance Dock",
+  "version": "0.2.0",
+  "author": "seunghan91",
+  "license": "MIT",
+  "description": "A dock of open apps: hover the bar left of the clock to drop one under the pointer, or keep an Apple-style dock on the left, right or bottom edge.",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "Main.qml"
+  },
+  "barWidget": {
+    "displayName": "Glance Dock",
+    "description": "App icons for the windows in a workspace, shown when you hover the bar left of the clock.",
+    "category": "Compositor",
+    "allowMultiple": false,
+    "defaultSection": "left",
+    "defaults": {
+      "iconScale": "normal",
+      "hoverDelayMs": 250,
+      "edgeDock": "left",
+      "edgeMode": "autohide"
+    },
+    "schema": [
+      {
+        "key": "iconScale",
+        "type": "enum",
+        "label": "Icon size",
+        "options": [
+          "small",
+          "normal",
+          "large"
+        ],
+        "defaultValue": "normal",
+        "description": "Icons follow the bar size (bar height x 1.08); this scales them by 0.85, 1 or 1.2."
+      },
+      {
+        "key": "hoverDelayMs",
+        "type": "integer",
+        "label": "Hover delay (ms)",
+        "min": 0,
+        "max": 1000,
+        "step": 50,
+        "defaultValue": 250,
+        "description": "How long the pointer rests on the bar before the dock opens."
+      },
+      {
+        "key": "edgeDock",
+        "type": "enum",
+        "label": "Edge dock",
+        "options": [
+          "off",
+          "left",
+          "right",
+          "bottom"
+        ],
+        "defaultValue": "left",
+        "description": "A dock of every open app on a screen edge, in addition to the bar hover dock."
+      },
+      {
+        "key": "edgeMode",
+        "type": "enum",
+        "label": "Edge dock behaviour",
+        "options": [
+          "autohide",
+          "pinned"
+        ],
+        "defaultValue": "autohide",
+        "description": "autohide slides the dock in when the pointer touches the edge; pinned keeps it out and moves tiled windows aside."
+      }
+    ]
+  }
+}
