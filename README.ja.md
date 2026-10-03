@@ -2,7 +2,7 @@
 
 [English](README.md) · [한국어](README.ko.md) · **日本語** · [简体中文](README.zh-CN.md) · [Español](README.es.md) · [Deutsch](README.de.md) · [Français](README.fr.md) · [Português (BR)](README.pt-BR.md) · [Русский](README.ru.md)
 
-作者 **Seunghan** ([@seunghan91](https://github.com/seunghan91)) · [プロジェクトページ](https://seunghan.xyz/omarchy/glance-dock/)
+作者 **Seunghan** ([@seunghan91](https://github.com/seunghan91)) · [プロジェクトページ](https://seunghan.xyz/omarchy/glance-dock/) · [omarchyplugins.com](https://omarchyplugins.com/plugin.html?id=io.github.seunghan91.glance-dock)
 
 Omarchy シェル向けの、開いているアプリのドックです。時計の左側にあるバーにポインターを置いたままにすると、その真下にアプリアイコンの列が降りてきます。ワークスペース番号の上ではそのワークスペースのウィンドウを、ゾーン内のそれ以外の場所ではフォーカス中のワークスペースのウィンドウを表示します。画面の左・右・下には Apple 風のエッジドックを任意で置けて、すべてのワークスペースで開いているアプリを一覧します。どちらのドックも、アプリのウィンドウ一覧と Quit / Force Quit を備えた同じ右クリックメニューを共有します。
 
@@ -54,6 +54,12 @@ omarchy plugin remove io.github.seunghan91.glance-dock
 ## 設定
 
 Omarchy バーのウィジェット設定から変更します。
+
+```bash
+omarchy bar set io.github.seunghan91.glance-dock edgeDock right
+omarchy bar set io.github.seunghan91.glance-dock edgeMode pinned
+omarchy bar set io.github.seunghan91.glance-dock hoverDelayMs 150 --json
+```
 
 | キー | 値 | 既定値 | 意味 |
 |---|---|---|---|

@@ -2,7 +2,7 @@
 
 [English](README.md) · **한국어** · [日本語](README.ja.md) · [简体中文](README.zh-CN.md) · [Español](README.es.md) · [Deutsch](README.de.md) · [Français](README.fr.md) · [Português (BR)](README.pt-BR.md) · [Русский](README.ru.md)
 
-제작 **Seunghan** ([@seunghan91](https://github.com/seunghan91)) · [프로젝트 페이지](https://seunghan.xyz/omarchy/glance-dock/)
+제작 **Seunghan** ([@seunghan91](https://github.com/seunghan91)) · [프로젝트 페이지](https://seunghan.xyz/omarchy/glance-dock/) · [omarchyplugins.com](https://omarchyplugins.com/plugin.html?id=io.github.seunghan91.glance-dock)
 
 Omarchy 셸용 열린 앱 독입니다. 시계 왼쪽의 바 위에 포인터를 올려 두면 바로 아래로 앱 아이콘 줄이 내려옵니다. 워크스페이스 번호 위에서는 그 워크스페이스의 창을, 영역 안의 다른 곳에서는 포커스된 워크스페이스의 창을 보여 줍니다. 화면 왼쪽·오른쪽·아래 가장자리에는 Apple 스타일의 엣지 독을 선택해서 둘 수 있으며, 모든 워크스페이스에 열린 앱을 전부 나열합니다. 두 독은 앱의 창 목록과 Quit / Force Quit이 있는 우클릭 메뉴를 함께 씁니다.
 
@@ -54,6 +54,12 @@ omarchy plugin remove io.github.seunghan91.glance-dock
 ## 설정
 
 Omarchy 바에서 위젯의 설정으로 바꿉니다.
+
+```bash
+omarchy bar set io.github.seunghan91.glance-dock edgeDock right
+omarchy bar set io.github.seunghan91.glance-dock edgeMode pinned
+omarchy bar set io.github.seunghan91.glance-dock hoverDelayMs 150 --json
+```
 
 | 키 | 값 | 기본값 | 의미 |
 |---|---|---|---|

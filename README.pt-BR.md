@@ -2,7 +2,7 @@
 
 [English](README.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md) · [Español](README.es.md) · [Deutsch](README.de.md) · [Français](README.fr.md) · **Português (BR)** · [Русский](README.ru.md)
 
-Por **Seunghan** ([@seunghan91](https://github.com/seunghan91)) · [Página do projeto](https://seunghan.xyz/omarchy/glance-dock/)
+Por **Seunghan** ([@seunghan91](https://github.com/seunghan91)) · [Página do projeto](https://seunghan.xyz/omarchy/glance-dock/) · [omarchyplugins.com](https://omarchyplugins.com/plugin.html?id=io.github.seunghan91.glance-dock)
 
 Um dock de aplicativos abertos para o shell do Omarchy. Deixe o ponteiro
 parado na barra, à esquerda do relógio, e logo abaixo aparece uma fileira de
@@ -82,6 +82,12 @@ omarchy plugin remove io.github.seunghan91.glance-dock
 ## Configurações
 
 Altere-as nas configurações do widget na barra do Omarchy.
+
+```bash
+omarchy bar set io.github.seunghan91.glance-dock edgeDock right
+omarchy bar set io.github.seunghan91.glance-dock edgeMode pinned
+omarchy bar set io.github.seunghan91.glance-dock hoverDelayMs 150 --json
+```
 
 | Chave | Valores | Padrão | Significado |
 |---|---|---|---|

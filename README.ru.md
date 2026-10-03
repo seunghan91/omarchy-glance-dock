@@ -2,7 +2,7 @@
 
 [English](README.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md) · [Español](README.es.md) · [Deutsch](README.de.md) · [Français](README.fr.md) · [Português (BR)](README.pt-BR.md) · **Русский**
 
-Автор: **Seunghan** ([@seunghan91](https://github.com/seunghan91)) · [Страница проекта](https://seunghan.xyz/omarchy/glance-dock/)
+Автор: **Seunghan** ([@seunghan91](https://github.com/seunghan91)) · [Страница проекта](https://seunghan.xyz/omarchy/glance-dock/) · [omarchyplugins.com](https://omarchyplugins.com/plugin.html?id=io.github.seunghan91.glance-dock)
 
 Док открытых приложений для оболочки Omarchy. Задержите указатель на панели слева от часов, и сразу под ним опустится ряд значков приложений: над номером рабочего стола он показывает окна этого рабочего стола, в любом другом месте зоны — окна рабочего стола в фокусе. Дополнительный док в стиле Apple у левого, правого или нижнего края экрана перечисляет все открытые приложения на всех рабочих столах. У обоих доков общее контекстное меню, в котором перечислены окна приложения и пункты Quit / Force Quit.
 
@@ -54,6 +54,12 @@ omarchy plugin remove io.github.seunghan91.glance-dock
 ## Настройки
 
 Меняются в настройках виджета на панели Omarchy.
+
+```bash
+omarchy bar set io.github.seunghan91.glance-dock edgeDock right
+omarchy bar set io.github.seunghan91.glance-dock edgeMode pinned
+omarchy bar set io.github.seunghan91.glance-dock hoverDelayMs 150 --json
+```
 
 | Ключ | Значения | По умолчанию | Назначение |
 |---|---|---|---|

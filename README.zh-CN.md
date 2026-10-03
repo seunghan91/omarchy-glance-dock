@@ -2,7 +2,7 @@
 
 [English](README.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · **简体中文** · [Español](README.es.md) · [Deutsch](README.de.md) · [Français](README.fr.md) · [Português (BR)](README.pt-BR.md) · [Русский](README.ru.md)
 
-作者 **Seunghan**（[@seunghan91](https://github.com/seunghan91)）· [项目主页](https://seunghan.xyz/omarchy/glance-dock/)
+作者 **Seunghan**（[@seunghan91](https://github.com/seunghan91)）· [项目主页](https://seunghan.xyz/omarchy/glance-dock/) · [omarchyplugins.com](https://omarchyplugins.com/plugin.html?id=io.github.seunghan91.glance-dock)
 
 Omarchy shell 的已打开应用 Dock。将指针停在时钟左侧的状态栏上，一排应用图标会立即在其正下方落下：指针在工作区编号上时，显示该工作区的窗口；在区域内的其他位置时，显示当前聚焦工作区的窗口。另有可选的 Apple 风格边缘 Dock，可放在屏幕左侧、右侧或底部，列出所有工作区中已打开的全部应用。两种 Dock 共用同一个右键菜单，菜单中列出该应用的窗口以及 Quit / Force Quit。
 
@@ -54,6 +54,12 @@ omarchy plugin remove io.github.seunghan91.glance-dock
 ## 设置
 
 在 Omarchy 状态栏中该组件的设置里修改这些选项。
+
+```bash
+omarchy bar set io.github.seunghan91.glance-dock edgeDock right
+omarchy bar set io.github.seunghan91.glance-dock edgeMode pinned
+omarchy bar set io.github.seunghan91.glance-dock hoverDelayMs 150 --json
+```
 
 | 键 | 取值 | 默认值 | 含义 |
 |---|---|---|---|
