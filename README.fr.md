@@ -127,9 +127,8 @@ Modifiez-les dans les réglages du widget dans la barre Omarchy.
 
 - Maintenir Alt *avant* le clic droit n'est pas détecté : le menu s'ouvre donc
   en Quit. Appuyez plutôt sur Alt une fois le menu ouvert.
-- Multi-écran : tant qu'un menu est ouvert, Hyprland ne lui transmet pas les
-  clics sur un autre écran, donc cliquer à cet endroit ne le ferme pas. Appuyez
-  sur **Esc**.
+- Multi-écran : un clic n'importe où sur un autre écran ferme aussi le menu
+  ouvert, comme sous macOS.
 - Un seul menu est ouvert à la fois sur l'ensemble des écrans ; en ouvrir un
   ferme l'autre.
 

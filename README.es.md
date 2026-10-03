@@ -124,9 +124,8 @@ Cámbialos en los ajustes del widget en la barra de Omarchy.
 
 - Mantener Alt pulsada *antes* del clic derecho no se detecta, así que el menú
   se abre como Quit. Pulsa Alt cuando el menú ya esté abierto.
-- Varios monitores: mientras un menú está abierto, Hyprland no le entrega los
-  clics hechos en otro monitor, así que hacer clic allí no lo cierra. Pulsa
-  **Esc**.
+- Varios monitores: un clic en cualquier parte de otro monitor también cierra
+  el menú abierto, como en macOS.
 - Solo hay un menú abierto a la vez en todos los monitores; abrir uno cierra el
   otro.
 

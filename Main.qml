@@ -249,7 +249,7 @@ BarWidget {
 
   // The menu lists the windows it was opened with. Drop the ones that have
   // closed since; once none are left, close the menu so its full-screen
-  // overlay stops holding the keyboard.
+  // overlay stops catching input.
   function pruneMenu() {
     if (!root.menuGroup) return
     var live = {}
@@ -283,6 +283,27 @@ BarWidget {
   Loader {
     active: root.barWindow !== null
     sourceComponent: MenuOverlay { dock: root }
+  }
+
+  // A menu is open on another monitor: a click anywhere on this screen
+  // closes it, as on macOS. The menu's overlay only covers its own screen.
+  property bool remoteMenuOpen: false
+  Loader {
+    active: root.remoteMenuOpen && root.barWindow !== null
+    sourceComponent: PanelWindow {
+      screen: root.barWindow ? root.barWindow.screen : null
+      color: "transparent"
+      anchors { top: true; bottom: true; left: true; right: true }
+      exclusionMode: ExclusionMode.Ignore
+      WlrLayershell.namespace: "glance-dock-menu-catcher"
+      WlrLayershell.layer: WlrLayer.Overlay
+      WlrLayershell.keyboardFocus: WlrKeyboardFocus.None
+      MouseArea {
+        anchors.fill: parent
+        acceptedButtons: Qt.AllButtons
+        onPressed: MenuOwner.closeOwner()
+      }
+    }
   }
 
   // Every open window on every workspace, for the edge dock.
@@ -331,7 +352,7 @@ BarWidget {
       }
     }
   }
-  Component.onCompleted: { Hyprland.refreshToplevels(); root.refreshAll() }
+  Component.onCompleted: { Hyprland.refreshToplevels(); root.refreshAll(); MenuOwner.register(root) }
 
   Loader {
     active: root.edgePosition !== "off" && root.barWindow !== null
@@ -375,7 +396,7 @@ BarWidget {
   // Reparenting a pointer handler also moves its QObject ownership, so hand
   // it back before this widget goes away; otherwise reloads would leave
   // handlers piling up on the bar.
-  Component.onDestruction: { zoneHover.parent = root; MenuOwner.release(root) }
+  Component.onDestruction: { zoneHover.parent = root; MenuOwner.unregister(root) }
 
   HoverHandler {
     id: zoneHover

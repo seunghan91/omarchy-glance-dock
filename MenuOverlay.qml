@@ -7,8 +7,11 @@ import qs.Commons
 // The right-click menu for both docks, like the macOS Dock: the app's
 // windows, then Quit. Holding Option (Alt) turns Quit into Force Quit.
 //
-// It is a transparent full-screen overlay with exclusive keyboard focus, so
-// Escape and Option reach it and a click anywhere outside the box closes it.
+// It is a transparent full-screen overlay that takes keyboard focus when it
+// opens (on-demand, not exclusive), so Escape and Option reach it and a click
+// anywhere outside the box closes it. Exclusive focus would also stop
+// Hyprland from delivering clicks on other monitors, where Main.qml's catcher
+// closes the menu.
 // The docks have no keyboard focus and a popup's focus grab never saw these
 // keys, which is why the menu is not a popup of the slot.
 PanelWindow {
@@ -25,7 +28,7 @@ PanelWindow {
   exclusionMode: ExclusionMode.Ignore
   WlrLayershell.namespace: "glance-dock-menu"
   WlrLayershell.layer: WlrLayer.Overlay
-  WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
+  WlrLayershell.keyboardFocus: WlrKeyboardFocus.OnDemand
 
   onVisibleChanged: {
     if (!visible) return

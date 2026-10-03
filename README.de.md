@@ -123,9 +123,8 @@ Diese werden in den Einstellungen des Widgets in der Omarchy-Leiste geändert.
 - Wird Alt gehalten, *bevor* man rechtsklickt, wird das nicht erkannt, das Menü
   öffnet sich also als Quit. Alt stattdessen drücken, wenn das Menü bereits
   offen ist.
-- Mehrere Monitore: Solange ein Menü offen ist, liefert Hyprland Klicks auf
-  einem anderen Monitor nicht an das Menü, ein Klick dort schließt es also
-  nicht. **Esc** drücken.
+- Mehrere Monitore: Ein Klick irgendwo auf einem anderen Monitor schließt das
+  offene Menü ebenfalls, wie unter macOS.
 - Über alle Monitore hinweg ist immer nur ein Menü offen; das Öffnen eines
   Menüs schließt das andere.
 

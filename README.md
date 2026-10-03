@@ -115,8 +115,8 @@ Change these in the widget's settings in the Omarchy bar.
 
 - Holding Alt *before* right-clicking is not detected, so the menu opens as
   Quit. Press Alt after the menu is open instead.
-- Multi-monitor: while a menu is open, Hyprland does not deliver clicks on
-  another monitor to it, so clicking there does not close it. Press **Esc**.
+- Multi-monitor: a click anywhere on another monitor also closes the open
+  menu, as on macOS.
 - Only one menu is open at a time across all monitors; opening one closes the
   other.
 
