@@ -39,6 +39,7 @@ BarWidget {
   // ── bar surface ──
   readonly property var barWindow: root.QsWindow.window
   readonly property Item barContent: barWindow ? barWindow.contentItem : null
+  readonly property var barMonitor: barWindow && barWindow.screen ? Hyprland.monitorFor(barWindow.screen) : null
   property real zoneEdge: 0
   onBarContentChanged: root.refreshZoneEdge()
 
@@ -100,8 +101,7 @@ BarWidget {
         if (x >= p.x && x <= p.x + buttons[i].width) return buttons[i].modelData
       }
     }
-    var monitor = root.barWindow && root.barWindow.screen ? Hyprland.monitorFor(root.barWindow.screen) : null
-    if (monitor && monitor.activeWorkspace) return monitor.activeWorkspace.id
+    if (root.barMonitor && root.barMonitor.activeWorkspace) return root.barMonitor.activeWorkspace.id
     return Hyprland.focusedWorkspace ? Hyprland.focusedWorkspace.id : 1
   }
 
@@ -373,6 +373,15 @@ BarWidget {
         root.regroupTries = 0
         regroupTimer.restart()
       }
+    }
+  }
+  // With several monitors, this bar's monitor can switch workspace while focus
+  // stays on another monitor, so focusedWorkspace never changes. Follow it too.
+  Connections {
+    target: root.barMonitor
+    ignoreUnknownSignals: true
+    function onActiveWorkspaceChanged() {
+      if (root.open && root.inZone) root.show(root.workspaceAt(root.pointerX))
     }
   }
   Component.onCompleted: { root.refreshZoneEdge(); Hyprland.refreshToplevels(); root.refreshAll(); MenuOwner.register(root) }
