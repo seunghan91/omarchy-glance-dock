@@ -10,7 +10,7 @@ import "MenuOwner.js" as MenuOwner
 
 // Glance Dock — hover the bar left of the clock and a row of app icons
 // drops down under the pointer. Over a workspace number it shows that
-// workspace's windows; anywhere else in the zone, the focused workspace's.
+// workspace's windows; anywhere else in the zone, the monitor's active workspace's.
 //
 // The widget itself takes no space in the bar. It watches the whole bar
 // surface through a HoverHandler parented to the bar window's content item,
@@ -39,6 +39,8 @@ BarWidget {
   // ── bar surface ──
   readonly property var barWindow: root.QsWindow.window
   readonly property Item barContent: barWindow ? barWindow.contentItem : null
+  property real zoneEdge: 0
+  onBarContentChanged: root.refreshZoneEdge()
 
   // Find another bar module by its moduleName. Widgets sit inside Loaders and
   // layout rows, so walk the item tree instead of assuming a fixed depth.
@@ -63,11 +65,30 @@ BarWidget {
 
   // The zone ends just before the clock. Without a clock, fall back to the
   // left 40% so the dock still works on custom layouts.
-  function zoneRight() {
-    if (!barContent) return 0
-    var clock = findModule(barContent, "omarchy.clock", 0)
-    if (clock && clock.visible) return clock.mapToItem(barContent, 0, 0).x - 4
-    return barContent.width * 0.4
+  function refreshZoneEdge() {
+    if (!barContent) { root.zoneEdge = 0; return }
+    var name = root.bar ? root.bar.centerAnchor : ""
+    var clock = typeof name === "string" && name.length > 0 ? findModule(barContent, name, 0) : null
+    if (!clock || !clock.visible) clock = findModule(barContent, "omarchy.clock", 0)
+    root.zoneEdge = clock && clock.visible ? clock.mapToItem(barContent, 0, 0).x - 4 : barContent.width * 0.4
+  }
+
+  Connections {
+    target: root.barContent
+    function onWidthChanged() { root.refreshZoneEdge() }
+    function onChildrenChanged() { root.refreshZoneEdge() }
+  }
+
+  Connections {
+    target: root.barWindow
+    function onScreenChanged() { root.refreshZoneEdge() }
+  }
+
+  Timer {
+    interval: 2000
+    running: zoneHover.hovered
+    repeat: true
+    onTriggered: root.refreshZoneEdge()
   }
 
   function workspaceAt(x) {
@@ -79,6 +100,8 @@ BarWidget {
         if (x >= p.x && x <= p.x + buttons[i].width) return buttons[i].modelData
       }
     }
+    var monitor = root.barWindow && root.barWindow.screen ? Hyprland.monitorFor(root.barWindow.screen) : null
+    if (monitor && monitor.activeWorkspace) return monitor.activeWorkspace.id
     return Hyprland.focusedWorkspace ? Hyprland.focusedWorkspace.id : 1
   }
 
@@ -352,7 +375,7 @@ BarWidget {
       }
     }
   }
-  Component.onCompleted: { Hyprland.refreshToplevels(); root.refreshAll(); MenuOwner.register(root) }
+  Component.onCompleted: { root.refreshZoneEdge(); Hyprland.refreshToplevels(); root.refreshAll(); MenuOwner.register(root) }
 
   Loader {
     active: root.edgePosition !== "off" && root.barWindow !== null
@@ -371,7 +394,7 @@ BarWidget {
   property real dockX: 0
   property real dockCentre: 0   // pointer x where the dock was last shown
 
-  readonly property bool inZone: zoneHover.hovered && root.pointerX < root.zoneRight()
+  readonly property bool inZone: zoneHover.hovered && root.pointerX < root.zoneEdge
   readonly property bool keepOpen: root.inZone || dockHover.hovered || root.menuOpen
 
   function show(wsId) {
@@ -401,6 +424,7 @@ BarWidget {
   HoverHandler {
     id: zoneHover
     parent: root.barContent
+    onHoveredChanged: if (hovered) root.refreshZoneEdge()
     onPointChanged: {
       root.pointerX = point.position.x
       if (root.open && root.inZone) {
