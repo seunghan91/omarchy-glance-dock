@@ -101,6 +101,7 @@ PanelWindow {
           width: parent.width - 20
           elide: Text.ElideRight
           text: (menuRow.checked ? "• " : "  ") + menuRow.label
+          textFormat: Text.PlainText
           color: Color.popups.text
           font.family: overlay.dock.bar ? overlay.dock.bar.fontFamily : "monospace"
           font.pixelSize: 12

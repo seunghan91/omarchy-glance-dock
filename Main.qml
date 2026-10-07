@@ -522,6 +522,7 @@ BarWidget {
         anchors.centerIn: parent
         visible: root.groups.length === 0
         text: "No open windows"
+        textFormat: Text.PlainText
         color: Color.popups.text
         opacity: 0.6
         font.family: root.bar ? root.bar.fontFamily : "monospace"
@@ -542,6 +543,7 @@ BarWidget {
         horizontalAlignment: Text.AlignHCenter
         visible: dock.overflow && hidden > 0
         text: "+" + hidden
+        textFormat: Text.PlainText
         color: Color.popups.text
         opacity: 0.6
         font.family: root.bar ? root.bar.fontFamily : "monospace"

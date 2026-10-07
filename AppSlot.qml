@@ -64,6 +64,7 @@ Item {
     visible: icon.source == "" || icon.status === Image.Error
     anchors.centerIn: parent
     text: String(slot.group.name || slot.group.appId || "?").charAt(0).toUpperCase()
+    textFormat: Text.PlainText
     color: Color.popups.text
     font.family: slot.dock.bar ? slot.dock.bar.fontFamily : "monospace"
     font.pixelSize: Math.round(slot.iconSize * 0.5)
@@ -97,6 +98,7 @@ Item {
       id: badge
       anchors.centerIn: parent
       text: slot.group.windows.length
+      textFormat: Text.PlainText
       color: Color.popups.text
       font.family: slot.dock.bar ? slot.dock.bar.fontFamily : "monospace"
       font.pixelSize: Math.max(8, Math.round(slot.slotSize * 0.22))
@@ -139,6 +141,7 @@ Item {
         id: tipText
         anchors.centerIn: parent
         text: slot.group.name + (slot.group.windows.length > 1 ? " · " + slot.group.windows.length : "")
+        textFormat: Text.PlainText
         color: Color.popups.text
         font.family: slot.dock.bar ? slot.dock.bar.fontFamily : "monospace"
         font.pixelSize: 12

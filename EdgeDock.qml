@@ -206,6 +206,7 @@ PanelWindow {
       }
       visible: edgeDock.overflow && hidden > 0
       text: "+" + hidden
+      textFormat: Text.PlainText
       color: Color.popups.text
       opacity: 0.6
       font.family: edgeDock.dock.bar ? edgeDock.dock.bar.fontFamily : "monospace"
